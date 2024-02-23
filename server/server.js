@@ -5,6 +5,7 @@ const cors = require('cors');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const passport = require('passport');
 const webhookRouter = require('./webhook'); // Import the webhook router
+const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -12,7 +13,13 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB (replace 'your-mongodb-uri' with your actual MongoDB URI)
 mongoose.connect('mongodb+srv://priyeshpandey2000:9zmEym4imGkdriNq@cluster0.sbnvhb0.mongodb.net/helpdesk');
 
-app.use(cors());
+app.use(cors(
+  {
+    origin: [" "],
+    methods: ["POST", "GET"],
+    credentials: true
+}
+));
 
 // Middleware for parsing JSON requests
 app.use(express.json());
@@ -55,13 +62,21 @@ app.post('/api/auth/local',
   }
 );
 
+// app.get('/api/test', (req, res) => {
+//   res.status(200).json({ message: 'Server is working!' });
+// });
+
+
 // Mount the webhook router at the /webhook path
 app.use('/webhook', webhookRouter);
 
 // Routes
-const authRoutes = require('./routes/auth');
+
 app.use('/api', authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+ 
+  
+
 });
