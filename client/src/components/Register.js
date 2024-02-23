@@ -4,11 +4,12 @@ import axios from 'axios';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  axios.defaults.withCredentials = true;
 
   const handleRegister = async () => {
     try {
       // Make a POST request to your backend for registration
-      const response = await axios.post('http://localhost:5000/api/register', {
+      const response = await axios.post('https://dm-helpdesk-o2havfro8-priyeshpandey2000s-projects.vercel.app/register', {
         email,
         password
       });

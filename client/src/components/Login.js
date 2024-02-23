@@ -6,11 +6,12 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); // useNavigate hook for navigation
+  axios.defaults.withCredentials = true;
 
   const handleLogin = async () => {
     try {
       // Make a POST request to your backend for login
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await axios.post('https://dm-helpdesk-o2havfro8-priyeshpandey2000s-projects.vercel.app/login', {
         email,
         password
       });
