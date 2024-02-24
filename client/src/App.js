@@ -1,12 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import Login from './components/Login';
 import Register from './components/Register';
 import ConnectFacebook from './components/ConnectFacebook';
 
+const history = createBrowserHistory();
+
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div>
         <Switch>
           <Route path="/login" component={Login} />
