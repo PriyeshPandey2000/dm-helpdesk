@@ -15,7 +15,7 @@ mongoose.connect('mongodb+srv://priyeshpandey2000:9zmEym4imGkdriNq@cluster0.sbnv
 
 app.use(cors(
   {
-    origin: [" "],
+    origin: ["https://dm-helpdesk-ox5v.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
 }
