@@ -1,12 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
-import { createBrowserHistory } from 'history';
+// import { createBrowserHistory } from 'history';
 
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
 
 const ConnectFacebook = () => {
-  const navigate = useHistory();
+  const history = useHistory();
 
   const responseFacebook = (response) => {
     console.log(response);
@@ -15,7 +15,7 @@ const ConnectFacebook = () => {
 
   const handleBack = () => {
     // Redirect back to the login page or any other appropriate page
-    navigate.push('/login');
+    history.push('/login');
   };
 
   return (

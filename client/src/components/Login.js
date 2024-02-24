@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // useNavigate hook for navigation
+  const history = useHistory(); // useNavigate hook for navigation
   axios.defaults.withCredentials = true;
 
   const handleLogin = async () => {
@@ -20,7 +20,7 @@ const Login = () => {
       console.log(response.data);
 
       // Redirect to the Facebook connect page on successful login
-      navigate('/connect-facebook');
+      history.push('/connect-facebook');
     } catch (error) {
       console.error('Login failed', error);
     }
